@@ -4,27 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbd4b36d-b60b-40bb-82f4-5f69e65bf716" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Classes/Dossier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Classes/FichePatient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Classes/Utilisateur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/TLSEmail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/modele/bdd/Bdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/emailUtil/Email.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/emailUtil/EmailUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/hspjava/hello-view.fxml" afterDir="false" />
+    <list default="true" id="fbd4b36d-b60b-40bb-82f4-5f69e65bf716" name="Changes" comment="Création des classes,arborescence du projet #1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Classes/CommandeProduit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Classes/Fournisseur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classes/Dossier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/Dossier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classes/FichePatient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/FichePatient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +41,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/KALLEE-DIGUMBER_Sh/IdeaProjects/HSPJAVA/src/main/java",
+    "last_opened_file_path": "C:/Users/KALLEE-DIGUMBER_Sh/IdeaProjects/ktm-ready-to-do-list-fx",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -76,8 +66,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705310542363</updated>
-      <workItem from="1705310543874" duration="6603000" />
+      <workItem from="1705310543874" duration="6905000" />
+      <workItem from="1705909747943" duration="1172000" />
     </task>
+    <task id="LOCAL-00001" summary="Création des classes,arborescence du projet #1">
+      <created>1705318041075</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1705318041075</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,5 +92,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Création des classes,arborescence du projet #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création des classes,arborescence du projet #1" />
   </component>
 </project>

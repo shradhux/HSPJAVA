@@ -10,8 +10,9 @@ public class FichePatient {
     private String rue;
     private String code_postal;
     private String ville;
+    private static int ref_utilisateur;
 
-    public FichePatient(int id_fiche_patient, String nom, String prenom, String email,int num_securite_social,String telephone,String rue,String code_postal,String ville) {
+    public FichePatient(int id_fiche_patient, String nom, String prenom, String email,int num_securite_social,String telephone,String rue,String code_postal,String ville,int ref_utilisateur) {
         this.id_fiche_patient = id_fiche_patient;
         this.nom = nom;
         this.prenom = prenom;
@@ -21,6 +22,7 @@ public class FichePatient {
         this.rue=rue;
         this.code_postal= code_postal;
         this.ville = ville;
+        this.ref_utilisateur=ref_utilisateur;
 
     }
     public static int getId() {
@@ -47,4 +49,7 @@ public class FichePatient {
     public String getRue(){return rue;}
     public String getCode_postal(){return code_postal;}
     public String getVille(){return ville;}
+    public static int getRef_utilisateur() {
+        return ref_utilisateur;
+    }
 }
