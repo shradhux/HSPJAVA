@@ -38,7 +38,7 @@ public class Connection {
                 this.oubli.setVisible(true);
             }
             else {
-                Main.change("Accueil_1", new Accueil_1(user), "vous etes connecté, bravooooo!!!!!");
+                //Main.change("Accueil_1", new Accueil_1(user), "vous etes connecté, bravooooo!!!!!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -47,11 +47,13 @@ public class Connection {
     }
 
     @FXML
-    void inscription(ActionEvent event) { Main.change("Inscription", new Inscription(), "Inscrit toi ;) "); }
+    void inscription(ActionEvent event) {
+        //Main.change("Inscription", new Inscription(), "Inscrit toi ;) ");
+         }
 
     @FXML
     void oubli(ActionEvent event) {
-        Main.change("Oubli", new Oubli(), "ah, C balo  :(  !!!");
+        //Main.change("Oubli", new Oubli(), "ah, C balo  :(  !!!");
     }
 
 }

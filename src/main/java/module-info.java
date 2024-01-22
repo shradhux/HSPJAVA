@@ -1,10 +1,12 @@
-module com.example.hspjava {
+module HSPJAVA {
+    requires java.sql;
+    requires jakarta.mail;
+    requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;
-
+    requires javafx.graphics;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
-
-    opens com.example.hspjava to javafx.fxml;
-    exports com.example.hspjava;
+    opens application to javafx.fxml;
+    exports application;
 }
