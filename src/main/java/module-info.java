@@ -8,5 +8,6 @@ module HSPJAVA {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     opens application to javafx.fxml;
+    opens graphicController to javafx.fxml;
     exports application;
 }
