@@ -8,27 +8,29 @@ public class Utilisateur {
     private String email;
     private String role;
     private String mdp;
-    private boolean est_admin;
 
-    public Utilisateur(int id, String nom, String prenom, String email, String mdp,boolean est_admin) {
+
+    public Utilisateur(int id, String nom, String role, String prenom, String email, String mdp) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.mdp = mdp;
-        this.est_admin=est_admin;
+        this.role=role;
+
     }
     public static int getId() {
         return id;
     }
-    public boolean getEst_admin() {
-        return est_admin;
-    }
+
 
 
 
     public String getNom() {
         return nom;
+    }
+    public String getRole() {
+        return role;
     }
 
     public String getPrenom() {
