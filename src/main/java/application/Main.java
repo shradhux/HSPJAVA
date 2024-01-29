@@ -24,7 +24,7 @@ public class Main extends Application {
 
 
 
-        PreparedStatement extraireListes = new Bdd().getBdd().prepareStatement("SELECT * FROM liste");
+        PreparedStatement Utilisateur = new Bdd().getBdd().prepareStatement("SELECT * FROM Utilisateur");
 
 
         this.stage = mystage;
