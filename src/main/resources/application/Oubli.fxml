@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <TextField fx:id="input" layoutX="226.0" layoutY="188.0" />
+      <Label fx:id="title" layoutX="258.0" layoutY="134.0" text="Rentrer votre adresse mail :" />
+      <Button fx:id="verrif" layoutX="274.0" layoutY="226.0" mnemonicParsing="false" onAction="#verrifi_email" text="valider" />
+      <Label fx:id="email_envoie" layoutX="277.0" layoutY="264.0" text="un email a été envoye" visible="false" />
+   </children>
+</AnchorPane>
