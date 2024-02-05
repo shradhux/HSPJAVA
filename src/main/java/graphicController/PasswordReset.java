@@ -1,11 +1,14 @@
 package graphicController;
 
 import Classes.Utilisateur;
+import application.Main;
 import controller.Controller.UtilisateurController;
+import javafx.collections.SetChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 
 public class PasswordReset {
 
@@ -45,6 +48,7 @@ public class PasswordReset {
                 user.setMdp(mdp.getText());
                 System.out.println("ok");
                 UtilisateurController.SetMdp(user);
+                Main.change("Connection");
             }
             else{
                 message.setText("Les mots de passe e ");

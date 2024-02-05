@@ -38,7 +38,7 @@ public class Oubli {
     @FXML
     void verrifi_email(ActionEvent event) {
         try {
-            PreparedStatement req = new Bdd().getBdd().prepareStatement("select count(id_utilisateur) from utilisateur where mail = ? ;");
+            PreparedStatement req = new Bdd().getBdd().prepareStatement("select count(id_utilisateur) from utilisateur where email = ? ;");
             req.setString(1, input.getText());
             ResultSet res = req.executeQuery();
             res.next();
@@ -66,7 +66,7 @@ public class Oubli {
     public void verrif() throws SQLException {
         if (parseInt(input.getText()) == this.nb){
             System.out.println(parseInt(input.getText()));
-            Main.change("PasswordReset", new PasswordReset(UtilisateurController.getByEmail(this.email)), "bah reset password ein");
+            Main.change("PasswordReset", new PasswordReset(UtilisateurController.getByEmail(this.email)), "Réinitiliser le mot de passe !");
         }
         else {
             Main.change("Oubli", new Oubli(), "Dommage");

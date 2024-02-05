@@ -17,8 +17,8 @@ public class TLSEmail {
      Port for TLS/STARTTLS: 587
      */
     public static void main(String[] args) {
-        final String fromEmail = "natacha.coucou.hibou@gmail.com"; //requires valid gmail id
-        final String password = "xrilmahriuhyrevn"; // correct password for gmail id
+        final String fromEmail = "hsp.projet@gmail.com"; //requires valid gmail id
+        final String password = "cwmx saha vztd pxai"; // correct password for gmail id
         final String toEmail = "shradhakallee@gmail.com"; // can be any email id
 
         System.out.println("TLSEmail Start");
