@@ -22,6 +22,8 @@ public class Connection {
     private TextField login;
 
     @FXML
+    private Button cruduser;
+    @FXML
     private TextField mdp;
 
     @FXML
@@ -46,7 +48,10 @@ public class Connection {
 
     }
 
-
+    @FXML
+    void cruduserbtn(ActionEvent event) {
+        Main.change("UserCrud", new UserCrud(), "Crud user");
+    }
 
     @FXML
     void oubli(ActionEvent event) {
