@@ -50,7 +50,7 @@ public class UtilisateurController {
 
     }
 
-    public static void inscription(Utilisateur user) {
+    public static void Ajouter(Utilisateur user) {
         PreparedStatement req = null;
         try {
             req = new Bdd().getBdd().prepareStatement("INSERT INTO utilisateur (nom, prenom, email, mdp, role) VALUES (?,?,?,?,0) ");
