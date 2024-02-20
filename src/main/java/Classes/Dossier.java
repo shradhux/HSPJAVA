@@ -8,7 +8,7 @@ public class Dossier {
     private static int id;
     private Date date;
     private Time heure;
-    private String symptome;
+    private static String symptome;
     private String gravite;
     private static int ref_utilisateur;
     private static int ref_fiche_patient;
@@ -29,13 +29,13 @@ public class Dossier {
 
     public Date getDate(){return date;}
     public Time getHeure(){return heure;}
-    public String getSymptome(){return symptome;}
-    public String getGravite(){return gravite;}
-    public static int getRef_fiche_patient() {
+    public  String getSymptome(){return symptome;}
+    public  String getGravite(){return gravite;}
+    public  int getRef_fiche_patient() {
         return ref_fiche_patient;
     }
 
-    public static int getRef_utilisateur() {
+    public  int getRef_utilisateur() {
         return ref_utilisateur;
     }
 

@@ -6,7 +6,7 @@ public class Hospitalisation {
     private static int id;
     private static Date date_prise_en_charge;
     private String desciption_de_la_maladie;
-    private static int ref_dossier;
+    private  int ref_dossier;
 
     public Hospitalisation(int id, Date date_prise_en_charge, String desciption_de_la_maladie, int ref_dossier) {
         this.id = id;
@@ -26,7 +26,7 @@ public class Hospitalisation {
     public String getDescription_de_la_maladie() {
         return desciption_de_la_maladie;
     }
-    public static int getRef_dossier() {
+    public  int getRef_dossier() {
         return ref_dossier;
     }
 

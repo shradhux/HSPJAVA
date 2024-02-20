@@ -1,7 +1,6 @@
 package controller.Controller;
 
 import Classes.Chambre;
-import Classes.Fournisseur;
 import modele.bdd.Bdd;
 
 import java.sql.PreparedStatement;
