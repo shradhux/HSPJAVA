@@ -4,10 +4,10 @@ package Classes;
 
 public class CommandeProduit {
     private static int id;
-    private String raison;
-    private String statut;
-    private static int ref_utilisateur;
-    private static int ref_fournisseur;
+    private  String raison;
+    private  String statut;
+    private  int ref_utilisateur;
+    private int ref_fournisseur;
 
     public CommandeProduit(int id, String raison, String statut,int ref_utilisateur,int ref_fournisseur) {
         this.id= id;
@@ -20,14 +20,14 @@ public class CommandeProduit {
     public static int getId() {
         return id;
     }
-    public static int getRef_fournisseur() {
+    public int getRef_fournisseur() {
         return ref_fournisseur;
     }
 
-    public static int getRef_utilisateur() {
+    public  int getRef_utilisateur() {
         return ref_utilisateur;
     }
-    public String getRaison() {
+    public  String getRaison() {
         return raison;
     }
     public String getStatut() {

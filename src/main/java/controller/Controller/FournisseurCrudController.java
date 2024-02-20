@@ -1,9 +1,6 @@
 package controller.Controller;
-
 import Classes.Fournisseur;
-import Classes.Utilisateur;
 import modele.bdd.Bdd;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

@@ -2,11 +2,11 @@ package Classes;
 
 public class DemandeProduit {
     private static int id;
-    private  String raison;
-    private int quantite;
-    private  String statut;
-    private static int ref_produit;
-    private static int ref_utilisateur;
+    private String raison;
+    private  int quantite;
+    private String statut;
+    private  int ref_produit;
+    private  int ref_utilisateur;
 
 
     public DemandeProduit(int id, String raison, int quantite,String statut,int ref_produit, int ref_utilisateur) {
@@ -22,20 +22,20 @@ public class DemandeProduit {
         return id;
     }
 
-    public String getRaison() {
+    public  String getRaison() {
         return raison;
     }
-    public String getStatut() {
+    public  String getStatut() {
         return statut;
     }
-    public int getQuantite() {
+    public  int getQuantite() {
         return quantite;
     }
 
-    public static int getRef_produit() {
+    public  int getRef_produit() {
         return ref_produit;
     }
-    public static int getRef_utilisateur() {
+    public int getRef_utilisateur() {
         return ref_utilisateur;
     }
 }
