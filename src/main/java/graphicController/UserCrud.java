@@ -39,6 +39,9 @@ public class UserCrud {
     private TableColumn<String, ?> emailT;
 
     @FXML
+    private TableColumn<String, ?> mdpT;
+
+    @FXML
     private TextField nom;
 
     @FXML
@@ -46,6 +49,8 @@ public class UserCrud {
 
     @FXML
     private TextField role;
+    @FXML
+    private TextField mdp;
 
     @FXML
     private TableColumn<String, ?> roleT;
@@ -62,6 +67,7 @@ public class UserCrud {
         TableColumn<ObservableList<String>, String> prenomCol = new TableColumn<>("Prénom");
         TableColumn<ObservableList<String>, String> emailCol = new TableColumn<>("Email");
         TableColumn<ObservableList<String>, String> roleCol = new TableColumn<>("Rôle");
+        TableColumn<ObservableList<String>, String> mdpCol = new TableColumn<>("mdp");
 
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0))); // Index 0 pour la première colonne (ID)
@@ -69,9 +75,9 @@ public class UserCrud {
         prenomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2))); // Index 2 pour la troisième colonne (Prénom)
         emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3))); // Index 3 pour la quatrième colonne (Email)
         roleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4))); // Index 4 pour la cinquième colonne (Rôle)
-
+        mdpCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
         // Ajouter les colonnes à la TableView
-        table.getColumns().addAll(idCol, nomCol, prenomCol, emailCol, roleCol);
+        table.getColumns().addAll(idCol, nomCol, prenomCol, emailCol, roleCol,mdpCol);
     }
 
 
@@ -95,11 +101,12 @@ public class UserCrud {
     void register(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO utilisateur (nom, prenom, email, role) VALUES (?,?,?,?)");
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO utilisateur (nom, prenom, email, role,mdp) VALUES (?,?,?,?,?)");
             req.setString(1, this.nom.getText());
             req.setString(2, this.nom.getText());
             req.setString(3, this.nom.getText());
             req.setString(4, this.nom.getText());
+            req.setString(5, this.mdp.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -129,6 +136,7 @@ public class UserCrud {
                 row.add(rs.getString("prenom"));
                 row.add(rs.getString("email"));
                 row.add(rs.getString("role"));
+                row.add(rs.getString("mdp"));
                 data.add(row);
             }
 
@@ -151,12 +159,13 @@ public class UserCrud {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, role = ? WHERE id_utilisateur = ?");
+            req = new Bdd().getBdd().prepareStatement("UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, role = ?,mdp = ? WHERE id_utilisateur = ?");
             req.setString(1, this.nom.getText());
             req.setString(2, this.prenom.getText());
             req.setString(3, this.email.getText());
             req.setString(4, this.role.getText());
-            req.setString(5, this.id.getText());
+            req.setString(5, this.mdp.getText());
+            req.setString(6, this.id.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

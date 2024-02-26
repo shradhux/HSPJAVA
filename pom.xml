@@ -13,8 +13,24 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>charm-glisten</id>
+            <name>charm-glisten Repository</name>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.gluonhq/gluonfx-maven-plugin -->
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>gluonfx-maven-plugin</artifactId>
+            <version>1.0.22</version>
+        </dependency>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>

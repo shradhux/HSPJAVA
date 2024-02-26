@@ -15,10 +15,12 @@
         <Label layoutX="46.0" layoutY="130.0" prefHeight="38.0" prefWidth="101.0" text="prenom" />
         <Label layoutX="46.0" layoutY="173.0" prefHeight="38.0" prefWidth="101.0" text="email" />
         <Label layoutX="46.0" layoutY="213.0" prefHeight="38.0" prefWidth="101.0" text="role" />
+        <Label layoutX="46.0" layoutY="253.0" prefHeight="38.0" prefWidth="101.0" text="mdp" />
         <TextField fx:id="nom" layoutX="194.0" layoutY="82.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="prenom" layoutX="194.0" layoutY="130.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="email" layoutX="194.0" layoutY="174.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="role" layoutX="194.0" layoutY="219.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="mdp" layoutX="194.0" layoutY="264.0" prefHeight="38.0" prefWidth="149.0" />
         <Button layoutX="358.0" layoutY="278.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Ajouter" />
         <Label fx:id="lavel" layoutX="54.0" layoutY="278.0" prefHeight="38.0" prefWidth="235.0" />
         <Button layoutX="128.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="38.0" prefWidth="120.0" text="Supprimer" />
