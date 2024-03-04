@@ -7,7 +7,6 @@ public class Produit {
     private int nv_danger;
     public int stock;
 
-
     public Produit(int id,String libelle,String description, int nv_danger, int stock) {
         this.id = id;
         this.libelle = libelle;

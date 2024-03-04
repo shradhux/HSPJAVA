@@ -58,20 +58,20 @@ public class CrudProduit {
     public void initialize() {
         // Configurez les cellules des colonnes pour afficher les valeurs correctes
         TableColumn<ObservableList<String>, String> idCol = new TableColumn<>("ID");
-        TableColumn<ObservableList<String>, String> nomCol = new TableColumn<>("Nom");
-        TableColumn<ObservableList<String>, String> prenomCol = new TableColumn<>("Prénom");
-        TableColumn<ObservableList<String>, String> emailCol = new TableColumn<>("Email");
-        TableColumn<ObservableList<String>, String> roleCol = new TableColumn<>("Rôle");
+        TableColumn<ObservableList<String>, String> libelleCol = new TableColumn<>("libelle");
+        TableColumn<ObservableList<String>, String> descriptionCol = new TableColumn<>("description");
+        TableColumn<ObservableList<String>, String> nivDangerCol = new TableColumn<>("niv_danger");
+        TableColumn<ObservableList<String>, String> stockCol = new TableColumn<>("stock");
 
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0))); // Index 0 pour la première colonne (ID)
-        nomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1))); // Index 1 pour la deuxième colonne (Nom)
-        prenomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2))); // Index 2 pour la troisième colonne (Prénom)
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3))); // Index 3 pour la quatrième colonne (Email)
-        roleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4))); // Index 4 pour la cinquième colonne (Rôle)
+        libelleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1))); // Index 1 pour la deuxième colonne (Nom)
+        descriptionCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2))); // Index 2 pour la troisième colonne (Prénom)
+        nivDangerCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3))); // Index 3 pour la quatrième colonne (Email)
+        stockCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4))); // Index 4 pour la cinquième colonne (Rôle)
 
         // Ajouter les colonnes à la TableView
-        table.getColumns().addAll(idCol, nomCol, prenomCol, emailCol, roleCol);
+        table.getColumns().addAll(idCol, libelleCol, descriptionCol, nivDangerCol, stockCol);
     }
 
 
@@ -82,7 +82,7 @@ public class CrudProduit {
     void deleteUser(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("DELETE FROM utilisateur WHERE id_utilisateur = ?");
+            req = new Bdd().getBdd().prepareStatement("DELETE FROM produit WHERE id_produit = ?");
             req.setString(1, this.id.getText());
 
             req.executeUpdate();
@@ -95,7 +95,7 @@ public class CrudProduit {
     void register(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO utilisateur (nom, prenom, email, role) VALUES (?,?,?,?)");
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO produit (libelle, description, niv_danger, stock) VALUES (?,?,?,?)");
             req.setString(1, this.nom.getText());
             req.setString(2, this.nom.getText());
             req.setString(3, this.nom.getText());
