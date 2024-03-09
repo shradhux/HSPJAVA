@@ -40,7 +40,7 @@ public class Connection {
                 this.oubli.setVisible(true);
             }
             else {
-                Main.change("Accueil", new Accueil(), "vous etes connecté, bravooooo!!!!!");
+                Main.change("Accueil", new Accueil.Accueil(), "vous etes connecté, bravooooo!!!!!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,23 +1,15 @@
 package graphicController;
 
-import Classes.Utilisateur;
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import modele.bdd.Bdd;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 public class Accueil {
+
+    @FXML
+    private Pane avatar;
 
     @FXML
     private ImageView fichepatient;
@@ -26,17 +18,13 @@ public class Accueil {
     private ImageView gestiondesutilisateurs;
 
     @FXML
-    private ImageView gestionstock;
-
-
+    private Button gestionfichepatient;
 
     @FXML
-    void fichepatient(ActionEvent event) {
-
-    }
+    private Button gestionutilisateurs;
 
     @FXML
-    void gestiondesutilisateurs(ActionEvent event) {
+    void gestionfichepatient(ActionEvent event) {
 
     }
 
@@ -45,8 +33,9 @@ public class Accueil {
 
     }
 
+    @FXML
+    void gestionutilisateurs(ActionEvent event) {
+
+    }
+
 }
-
-
-
-
