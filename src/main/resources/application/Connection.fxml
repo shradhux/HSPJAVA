@@ -19,5 +19,10 @@
    <PasswordField fx:id="mdp" />
    <Button fx:id="connectbutton" mnemonicParsing="false" onAction="#connection" text="se connecter" />
    <Button fx:id="oubli" mnemonicParsing="false" onAction="#oubli" text="mdp oublié" visible="false" />
+
+
    <Button fx:id="cruduser" mnemonicParsing="false" onAction="#cruduserbtn" text="Crud User" />
+    <Button fx:id="crudproduit" mnemonicParsing="false" onAction="#crudproduitbtn" text="Crud produit" />
+
+
 </VBox>

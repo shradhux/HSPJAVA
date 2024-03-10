@@ -18,37 +18,36 @@ import modele.bdd.Bdd;
 public class CrudProduit {
 
     @FXML
-    private TableColumn<String, ?> nomT;
+    private TableColumn<String, ?> libelleT;
 
     @FXML
     private TableColumn<?, ?> eid;
 
     @FXML
-    private TextField email;
+    private TextField niv_danger;
 
     @FXML
     private TextField id;
 
-    @FXML
-    private Label label;
+
 
     @FXML
-    private TableColumn<String, ?> prenomT;
+    private TableColumn<String, ?> descriptionT;
 
     @FXML
-    private TableColumn<String, ?> emailT;
+    private TableColumn<String, ?> niv_dangerT;
 
     @FXML
-    private TextField nom;
+    private TextField libelle;
 
     @FXML
-    private TextField prenom;
+    private TextField description;
 
     @FXML
-    private TextField role;
+    private TextField stock;
 
     @FXML
-    private TableColumn<String, ?> roleT;
+    private TableColumn<String, ?> stockT;
 
     @FXML
     private TableView<ObservableList<String>> table;
@@ -79,7 +78,7 @@ public class CrudProduit {
 
 
     @FXML
-    void deleteUser(ActionEvent event) {
+    void deleteProduit(ActionEvent event) {
         PreparedStatement req = null;
         try {
             req = new Bdd().getBdd().prepareStatement("DELETE FROM produit WHERE id_produit = ?");
@@ -96,10 +95,10 @@ public class CrudProduit {
         PreparedStatement req = null;
         try {
             req = new Bdd().getBdd().prepareStatement("INSERT INTO produit (libelle, description, niv_danger, stock) VALUES (?,?,?,?)");
-            req.setString(1, this.nom.getText());
-            req.setString(2, this.nom.getText());
-            req.setString(3, this.nom.getText());
-            req.setString(4, this.nom.getText());
+            req.setString(1, this.libelle.getText());
+            req.setString(2, this.description.getText());
+            req.setString(3, this.niv_danger.getText());
+            req.setString(4, this.stock.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -116,7 +115,7 @@ public class CrudProduit {
     @FXML
     void showAll(ActionEvent event) {
         try {
-            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM utilisateur");
+            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM Produit");
             ResultSet rs = req.executeQuery();
 
             ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
@@ -124,12 +123,11 @@ public class CrudProduit {
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 // Ajoutez les valeurs des colonnes à chaque ligne
-                row.add(rs.getString("id_utilisateur"));
-                row.add(rs.getString("nom"));
-                row.add(rs.getString("prenom"));
-                row.add(rs.getString("email"));
-                row.add(rs.getString("mdp"));
-                row.add(rs.getString("role"));
+                row.add(rs.getString("id_produit"));
+                row.add(rs.getString("libelle"));
+                row.add(rs.getString("description"));
+                row.add(rs.getString("niv_danger"));
+                row.add(rs.getString("stock"));
                 data.add(row);
             }
 
@@ -152,12 +150,11 @@ public class CrudProduit {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, role = ? WHERE id_utilisateur = ?");
-            req.setString(1, this.nom.getText());
-            req.setString(2, this.prenom.getText());
-            req.setString(3, this.email.getText());
-            req.setString(3, this.role.getText());
-            req.setString(4, this.role.getText());
+            req = new Bdd().getBdd().prepareStatement("UPDATE produit SET libelle = ?, description = ?, niv_danger = ?, stock = ? WHERE id_produit = ?");
+            req.setString(1, this.libelle.getText());
+            req.setString(2, this.description.getText());
+            req.setString(3, this.niv_danger.getText());
+            req.setString(4, this.stock.getText());
             req.setString(5, this.id.getText());
             req.executeUpdate();
         } catch (SQLException e) {

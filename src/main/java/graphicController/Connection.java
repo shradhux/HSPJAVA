@@ -23,6 +23,9 @@ public class Connection {
 
     @FXML
     private Button cruduser;
+
+    @FXML
+    private Button crudproduit;
     @FXML
     private TextField mdp;
 
@@ -40,7 +43,7 @@ public class Connection {
                 this.oubli.setVisible(true);
             }
             else {
-                Main.change("Accueil", new Accueil.Accueil(), "vous etes connecté, bravooooo!!!!!");
+                Main.change("Accueil", new Accueil(), "vous etes connecté, bravooooo!!!!!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -51,6 +54,11 @@ public class Connection {
     @FXML
     void cruduserbtn(ActionEvent event) {
         Main.change("UserCrud", new UserCrud(), "Crud user");
+    }
+
+    @FXML
+    void crudproduitbtn(ActionEvent event) {
+        Main.change("ProduitCrud", new CrudProduit(), "Crud produit");
     }
 
     @FXML

@@ -61,7 +61,7 @@ public class UserCrud {
 
     @FXML
     public void initialize() {
-        // Configurez les cellules des colonnes pour afficher les valeurs correctes
+
         TableColumn<ObservableList<String>, String> idCol = new TableColumn<>("ID");
         TableColumn<ObservableList<String>, String> nomCol = new TableColumn<>("Nom");
         TableColumn<ObservableList<String>, String> prenomCol = new TableColumn<>("Prénom");
@@ -69,14 +69,14 @@ public class UserCrud {
         TableColumn<ObservableList<String>, String> roleCol = new TableColumn<>("Rôle");
         TableColumn<ObservableList<String>, String> mdpCol = new TableColumn<>("mdp");
 
-        // Définir comment récupérer les valeurs pour chaque colonne
-        idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0))); // Index 0 pour la première colonne (ID)
-        nomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1))); // Index 1 pour la deuxième colonne (Nom)
-        prenomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2))); // Index 2 pour la troisième colonne (Prénom)
-        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3))); // Index 3 pour la quatrième colonne (Email)
-        roleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4))); // Index 4 pour la cinquième colonne (Rôle)
+
+        idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
+        nomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
+        prenomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
+        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
+        roleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
         mdpCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
-        // Ajouter les colonnes à la TableView
+
         table.getColumns().addAll(idCol, nomCol, prenomCol, emailCol, roleCol,mdpCol);
     }
 
@@ -130,16 +130,17 @@ public class UserCrud {
 
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
-                // Ajoutez les valeurs des colonnes à chaque ligne
+
                 row.add(rs.getString("id_utilisateur"));
                 row.add(rs.getString("nom"));
                 row.add(rs.getString("prenom"));
                 row.add(rs.getString("email"));
                 row.add(rs.getString("role"));
+                row.add(rs.getString("mdp"));
                 data.add(row);
             }
 
-            // Afficher les données dans la table
+
             table.setItems(data);
 
             rs.close();
