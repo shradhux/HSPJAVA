@@ -23,6 +23,7 @@
 
    <Button fx:id="cruduser" mnemonicParsing="false" onAction="#cruduserbtn" text="Crud User" />
     <Button fx:id="crudproduit" mnemonicParsing="false" onAction="#crudproduitbtn" text="Crud produit" />
+    <Button fx:id="crudhospitalisation" mnemonicParsing="false" onAction="#crudhospitalisationbtn" text="Crud hospitalisation" />
 
 
 </VBox>

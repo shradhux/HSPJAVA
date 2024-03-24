@@ -62,6 +62,11 @@ public class Connection {
     }
 
     @FXML
+    void crudhospitalisationbtn(ActionEvent event) {
+        Main.change("HospitalisationCrud", new CrudHospitalisation(), "Crud hospitalisation");
+    }
+
+    @FXML
     void oubli(ActionEvent event) {
         Main.change("Oubli", new Oubli(), "Réinitialiser votre mdp");
     }
