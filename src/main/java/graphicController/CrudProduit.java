@@ -3,15 +3,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.bdd.Bdd;
 
@@ -22,6 +20,9 @@ public class CrudProduit {
 
     @FXML
     private TableColumn<?, ?> eid;
+
+    @FXML
+    private Button retour;
 
     @FXML
     private TextField niv_danger;
@@ -160,6 +161,10 @@ public class CrudProduit {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    @FXML
+    void retour(ActionEvent event) {
+        Main.change("Accueil");
     }
 
 }

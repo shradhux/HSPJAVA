@@ -8,28 +8,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Accueil.java">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphicController.Accueil">
    <children>
       <Pane fx:id="avatar" prefHeight="400.0" prefWidth="600.0">
          <children>
             <AppBar prefHeight="53.0" prefWidth="600.0" titleText="Accueil" />
             <ImageView fx:id="fichepatient" fitHeight="114.0" fitWidth="135.0" layoutX="54.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Capture%20d’écran_9-3-2024_103639_www.bing.com.jpeg" />
-               </image>
-            </ImageView>
+                  <Image url="@../img/Capture%20d’écran_9-3-2024_103639_www.bing.com.jpeg" />
+               </image>            </ImageView>
             <ImageView fx:id="gestiondesutilisateurs" fitHeight="105.0" fitWidth="108.0" layoutX="250.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Capture%20d’écran_9-3-2024_103840_www.bing.com.jpeg" />
+                  <Image url="@../img/Capture%20d’écran_9-3-2024_103840_www.bing.com.jpeg" />
                </image>
             </ImageView>
             <ImageView fitHeight="114.0" fitWidth="108.0" layoutX="425.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Capture%20d’écran_9-3-2024_104334_www.flaticon.com.jpeg" />
+                  <Image url="@../img/Capture%20d’écran_9-3-2024_104334_www.flaticon.com.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="114.0" fitWidth="108.0" layoutX="425.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Capture%20d’écran_9-3-2024_104334_www.flaticon.com.jpeg" />
                </image>
             </ImageView>
             <Avatar layoutX="550.0" layoutY="14.0">
-               <image>                  <Image url="@Capture%20d’écran_9-3-2024_10460_www.flaticon.com.jpeg" />
+               <image>                  <Image url="@../img/Capture%20d’écran_9-3-2024_10460_www.flaticon.com.jpeg" />
                </image>
             </Avatar>
             <Button fx:id="gestionfichepatient" layoutX="47.0" layoutY="210.0" mnemonicParsing="false" onAction="#gestionfichepatient" text="Gestion Fiche Patient" />
