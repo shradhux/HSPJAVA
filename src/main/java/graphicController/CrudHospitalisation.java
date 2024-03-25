@@ -1,4 +1,5 @@
 package graphicController;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,13 +19,13 @@ import modele.bdd.Bdd;
 public class CrudHospitalisation {
 
     @FXML
-    private TableColumn<String, ?> datePriseEnChargeT;
+    private TableColumn<Date, ?> date_prise_en_chargeT;
 
     @FXML
     private TableColumn<?, ?> eid;
 
     @FXML
-    private TextField refDossier;
+    private TextField ref_dossier;
 
     @FXML
     private TextField id;
@@ -32,16 +33,16 @@ public class CrudHospitalisation {
 
 
     @FXML
-    private TableColumn<String, ?> descriptionDeLaMaladieT;
+    private TableColumn<String, ?> description_de_la_maladieT;
 
     @FXML
-    private TableColumn<String, ?> refDossierT;
+    private TableColumn<String, ?> ref_dossierT;
 
     @FXML
-    private TextField datePriseEnCharge;
+    private TextField date_prise_en_charge;
 
     @FXML
-    private TextField descriptionDeLaMaladie;
+    private TextField description_de_la_maladie;
 
 
 
@@ -53,20 +54,20 @@ public class CrudHospitalisation {
     public void initialize() {
         // Configurez les cellules des colonnes pour afficher les valeurs correctes
         TableColumn<ObservableList<String>, String> idCol = new TableColumn<>("ID");
-        TableColumn<ObservableList<String>, String> datePriseEnChargeCol = new TableColumn<>("datePriseEnCharge");
-        TableColumn<ObservableList<String>, String> descriptionDeLaMaladieCol = new TableColumn<>("descriptionDeLaMaladie");
-        TableColumn<ObservableList<String>, String> refDossierCol = new TableColumn<>("refDossier");
+        TableColumn<ObservableList<String>, String> date_prise_en_chargeCol = new TableColumn<>("date_prise_en_charge");
+        TableColumn<ObservableList<String>, String> description_de_la_maladieCol = new TableColumn<>("description_de_la_maladie");
+        TableColumn<ObservableList<String>, String> ref_dossierCol = new TableColumn<>("ref_dossier");
 
 
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0))); // Index 0 pour la première colonne (ID)
-        datePriseEnChargeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1))); // Index 1 pour la deuxième colonne (Nom)
-        descriptionDeLaMaladieCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2))); // Index 2 pour la troisième colonne (Prénom)
-        refDossierCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3))); // Index 3 pour la quatrième colonne (Email)
+        date_prise_en_chargeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1))); // Index 1 pour la deuxième colonne (Nom)
+        description_de_la_maladieCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2))); // Index 2 pour la troisième colonne (Prénom)
+        ref_dossierCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3))); // Index 3 pour la quatrième colonne (Email)
 
 
         // Ajouter les colonnes à la TableView
-        table.getColumns().addAll(idCol, datePriseEnChargeCol, descriptionDeLaMaladieCol, refDossierCol);
+        table.getColumns().addAll(idCol, date_prise_en_chargeCol, description_de_la_maladieCol, ref_dossierCol);
     }
 
 
@@ -77,7 +78,7 @@ public class CrudHospitalisation {
     void deletehospitalisation(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("DELETE FROM hospitalisation WHERE idhospitalisation = ?");
+            req = new Bdd().getBdd().prepareStatement("DELETE FROM hospitalisation WHERE id_hospitalisation = ?");
             req.setString(1, this.id.getText());
 
             req.executeUpdate();
@@ -90,10 +91,10 @@ public class CrudHospitalisation {
     void register(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO hospitalisation (datePriseEnCharge, description, nivdanger, stock) VALUES (?,?,?,?)");
-            req.setString(1, this.datePriseEnCharge.getText());
-            req.setString(2, this.descriptionDeLaMaladie.getText());
-            req.setString(3, this.refDossier.getText());
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO hospitalisation (date_prise_en_charge, description_de_la_maladie, ref_dossier) VALUES (?,?,?)");
+            req.setString(1, this.date_prise_en_charge.getText());
+            req.setString(2, this.description_de_la_maladie.getText());
+            req.setString(3, this.ref_dossier.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -118,10 +119,10 @@ public class CrudHospitalisation {
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 // Ajoutez les valeurs des colonnes à chaque ligne
-                row.add(rs.getString("idhospitalisation"));
-                row.add(rs.getString("datePriseEnCharge"));
-                row.add(rs.getString("descriptionDeLaMaladie"));
-                row.add(rs.getString("refDossier"));
+                row.add(rs.getString("id_hospitalisation"));
+                row.add(rs.getString("date_prise_en_charge"));
+                row.add(rs.getString("description_de_la_maladie"));
+                row.add(rs.getString("ref_dossier"));
                 data.add(row);
             }
 
@@ -144,10 +145,10 @@ public class CrudHospitalisation {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE hospitalisation SET datePriseEnCharge = ?, descriptionDeLaMaladie = ?, nivdanger = ?, stock = ? WHERE idhospitalisation = ?");
-            req.setString(1, this.datePriseEnCharge.getText());
-            req.setString(2, this.descriptionDeLaMaladie.getText());
-            req.setString(3, this.refDossier.getText());
+            req = new Bdd().getBdd().prepareStatement("UPDATE hospitalisation SET date_prise_en_charge = ?, description_de_la_maladie = ?, ref_dossier WHERE id_hospitalisation = ?");
+            req.setString(1, this.date_prise_en_charge.getText());
+            req.setString(2, this.description_de_la_maladie.getText());
+            req.setString(3, this.ref_dossier.getText());
             req.setString(4, this.id.getText());
             req.executeUpdate();
         } catch (SQLException e) {

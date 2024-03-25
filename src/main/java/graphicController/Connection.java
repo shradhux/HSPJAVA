@@ -67,6 +67,11 @@ public class Connection {
     }
 
     @FXML
+    void crudfichepatientbtn(ActionEvent event) {
+        Main.change("FichePatientCrud", new CrudFichePatient(), "Crud fiche patient");
+    }
+
+    @FXML
     void oubli(ActionEvent event) {
         Main.change("Oubli", new Oubli(), "Réinitialiser votre mdp");
     }

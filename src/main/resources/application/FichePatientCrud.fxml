@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.FichePatientCrud"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="520.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutY="-1.0" prefHeight="60.0" prefWidth="501.0" style="-fx-background-color: white;" text="Fiche patient" textFill="#172c90">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <Label layoutX="3.0" layoutY="63.0" prefHeight="38.0" prefWidth="101.0" text="nom" />
+        <Label layoutX="3.0" layoutY="97.0" prefHeight="38.0" prefWidth="101.0" text="prenom" />
+        <Label layoutX="3.0" layoutY="135.0" prefHeight="38.0" prefWidth="101.0" text="num_securite_sociale" />
+        <Label layoutX="3.0" layoutY="174.0" prefHeight="38.0" prefWidth="101.0" text="email" />
 
+        <Label layoutX="232.0" layoutY="63.0" prefHeight="38.0" prefWidth="101.0" text="telephone" />
+        <Label layoutX="232.0" layoutY="97.0" prefHeight="38.0" prefWidth="101.0" text="rue" />
+        <Label layoutX="232.0" layoutY="135.0" prefHeight="38.0" prefWidth="101.0" text="cp" />
+        <Label layoutX="232.0" layoutY="174.0" prefHeight="38.0" prefWidth="101.0" text="ville" />
+        <Label layoutX="96.0" layoutY="219.0" prefHeight="38.0" prefWidth="101.0" text="ref_utilisateur" />
+
+        <TextField fx:id="nom" layoutX="72.0" layoutY="63.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="prenom" layoutX="72.0" layoutY="101.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="num_securite_sociale" layoutX="72.0" layoutY="135.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="email" layoutX="72.0" layoutY="173.0" prefHeight="38.0" prefWidth="149.0" />
+
+        <TextField fx:id="telephone" layoutX="334.0" layoutY="63.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="rue" layoutX="334.0" layoutY="101.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="cp" layoutX="334.0" layoutY="139.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="ville" layoutX="334.0" layoutY="177.0" prefHeight="38.0" prefWidth="149.0" />
+        <TextField fx:id="ref_utilisateur" layoutX="208.0" layoutY="219.0" prefHeight="38.0" prefWidth="149.0" />
+
+        <Button layoutX="358.0" layoutY="278.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Ajouter" />
+        <Button layoutX="128.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteFichePatient" prefHeight="38.0" prefWidth="120.0" text="Supprimer" />
+        <TextField fx:id="id" layoutX="6.0" layoutY="334.0" prefHeight="38.0" prefWidth="112.0" promptText="Entrer ID pour sup ou modif" />
+        <Button layoutX="269.0" layoutY="334.0" mnemonicParsing="false" onAction="#showAll" prefHeight="38.0" prefWidth="101.0" text="Tout afficher" />
+        <TableView fx:id="table" layoutX="-1.0" layoutY="380.0" prefHeight="155.0" prefWidth="501.0">
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor></TableView>
+        <Button layoutX="391.0" layoutY="335.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="101.0" text="Modifier" />
+    </children>
 </AnchorPane>
