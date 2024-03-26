@@ -9,10 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modele.bdd.Bdd;
 
@@ -39,7 +36,7 @@ public class CrudHospitalisation {
     private TableColumn<String, ?> ref_dossierT;
 
     @FXML
-    private TextField date_prise_en_charge;
+    private DatePicker date_prise_en_charge;
 
     @FXML
     private TextField description_de_la_maladie;
@@ -92,7 +89,7 @@ public class CrudHospitalisation {
         PreparedStatement req = null;
         try {
             req = new Bdd().getBdd().prepareStatement("INSERT INTO hospitalisation (date_prise_en_charge, description_de_la_maladie, ref_dossier) VALUES (?,?,?)");
-            req.setString(1, this.date_prise_en_charge.getText());
+            req.setString(1, String.valueOf(this.date_prise_en_charge.getValue()));
             req.setString(2, this.description_de_la_maladie.getText());
             req.setString(3, this.ref_dossier.getText());
             req.executeUpdate();
@@ -145,8 +142,8 @@ public class CrudHospitalisation {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE hospitalisation SET date_prise_en_charge = ?, description_de_la_maladie = ?, ref_dossier WHERE id_hospitalisation = ?");
-            req.setString(1, this.date_prise_en_charge.getText());
+            req = new Bdd().getBdd().prepareStatement("UPDATE hospitalisation SET date_prise_en_charge = ?, description_de_la_maladie = ?, ref_dossier = ? WHERE id_hospitalisation = ?");
+            req.setString(1, String.valueOf(this.date_prise_en_charge.getValue()));
             req.setString(2, this.description_de_la_maladie.getText());
             req.setString(3, this.ref_dossier.getText());
             req.setString(4, this.id.getText());

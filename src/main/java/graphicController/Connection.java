@@ -76,4 +76,9 @@ public class Connection {
         Main.change("Oubli", new Oubli(), "Réinitialiser votre mdp");
     }
 
+    @FXML
+    void cruddossierbtn(ActionEvent event) {
+        Main.change("DossierCrud", new CrudFichePatient(), "Crud dossier");
+    }
+
 }
