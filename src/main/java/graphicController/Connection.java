@@ -78,7 +78,12 @@ public class Connection {
 
     @FXML
     void cruddossierbtn(ActionEvent event) {
-        Main.change("DossierCrud", new CrudFichePatient(), "Crud dossier");
+        Main.change("DossierCrud", new CrudDossier(), "Crud dossier");
     }
 
+
+    @FXML
+    void crudfournisseurbtn(ActionEvent event) {
+        Main.change("FournisseurCrud", new CrudFournisseur(), "Crud fournisseur");
+    }
 }

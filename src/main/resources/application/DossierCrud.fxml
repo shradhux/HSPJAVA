@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="520.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label layoutY="-1.0" prefHeight="60.0" prefWidth="501.0" style="-fx-background-color: white;" text="Crud hospitalisation" textFill="#172c90">
+        <Label layoutY="-1.0" prefHeight="60.0" prefWidth="501.0" style="-fx-background-color: white;" text="Crud dossier" textFill="#172c90">
             <font>
                 <Font size="25.0" />
             </font>
