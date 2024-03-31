@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -111,7 +112,7 @@ public class CrudDossier {
     @FXML
     void showAll(ActionEvent event) {
         try {
-            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM hospitalisation");
+            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM dossier");
             ResultSet rs = req.executeQuery();
 
             ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
@@ -148,7 +149,7 @@ public class CrudDossier {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE hospitalisation SET date = ?, heure = ?, symptome = ?,  gravite = ?,  ref_utilisateur = ?, ref_fiche_patient = ? WHERE id_dossier = ?");
+            req = new Bdd().getBdd().prepareStatement("UPDATE dossier SET date = ?, heure = ?, symptome = ?,  gravite = ?,  ref_utilisateur = ?, ref_fiche_patient = ? WHERE id_dossier = ?");
             req.setString(1, String.valueOf(this.date.getValue()));
             req.setString(2, this.heure.getText());
             req.setString(3, this.symptome.getText());
@@ -160,6 +161,10 @@ public class CrudDossier {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    @FXML
+    void retour(ActionEvent event) {
+        Main.change("Accueil");
     }
 
 }

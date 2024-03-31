@@ -39,6 +39,8 @@
             </Avatar>
             <Button fx:id="gestionfichepatient" layoutX="47.0" layoutY="210.0" mnemonicParsing="false" onAction="#gestionfichepatient" text="Gestion Fiche Patient" />
             <Button fx:id="gestionutilisateurs" layoutX="238.0" layoutY="213.0" mnemonicParsing="false" onAction="#gestionutilisateurs" text="Gestion Utilisateur" />
+            <Button fx:id="deconnexionButton" layoutX="400.0" layoutY="20.0" mnemonicParsing="false" text="Déconnexion" onAction="#deconnexion" />
+
             <Button layoutX="431.0" layoutY="213.0" mnemonicParsing="false" onAction="#gestionstock" text="Gestion Stock" />
          </children>
       </Pane>

@@ -26,4 +26,5 @@
     <Button fx:id="crudfournisseur" mnemonicParsing="false" onAction="#crudfournisseurbtn" text="Crud fournisseur" />
 
 
+
 </VBox>

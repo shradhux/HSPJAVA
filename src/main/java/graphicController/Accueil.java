@@ -26,9 +26,12 @@ public class Accueil {
     @FXML
     private Button gestionutilisateurs;
 
+    @FXML
+    private Button deconnexion;
 
     @FXML
     void gestionfichepatient(ActionEvent event) {
+        Main.change("FichePatientCrud", new CrudFichePatient(), "Crud fiche Patient");
 
     }
 
@@ -43,6 +46,13 @@ public class Accueil {
         Main.change("UserCrud", new UserCrud(), "Crud user");
     }
 
+
+
+    @FXML
+    void deconnexion(ActionEvent event) {Main.change("Connection");
+
     }
+
+}
 
 

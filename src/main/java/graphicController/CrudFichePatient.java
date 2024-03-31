@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,9 @@ public class CrudFichePatient {
 
     @FXML
     private TableColumn<String, ?> nomT;
+
+    @FXML
+    private Button retour;
 
     @FXML
     private TableColumn<String, ?> prenomT;
@@ -78,6 +82,9 @@ public class CrudFichePatient {
 
     @FXML
     private TextField ref_utilisateur;
+
+    @FXML
+    private Button gestiondossier;
 
     @FXML
     private TableView<ObservableList<String>> table;
@@ -194,10 +201,6 @@ public class CrudFichePatient {
 
 
 
-
-
-
-
     @FXML
     void update(ActionEvent event) {
         PreparedStatement req = null;
@@ -218,5 +221,15 @@ public class CrudFichePatient {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    void retour(ActionEvent event) {
+        Main.change("Accueil");
+    }
+
+    @FXML
+    void gestiondossier(ActionEvent event) {
+        Main.change("Accueil");
+    }
+
 
 }
