@@ -86,4 +86,10 @@ public class Connection {
     void crudfournisseurbtn(ActionEvent event) {
         Main.change("FournisseurCrud", new CrudFournisseur(), "Crud fournisseur");
     }
+
+    @FXML
+    void crudproduitfournisseurbtn(ActionEvent event) {
+        Main.change("ProduitFournisseurCrud", new CrudFournisseur(), "Crud produit fournisseur");
+    }
+
 }

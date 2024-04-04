@@ -12,14 +12,14 @@
                 <Font size="25.0" />
             </font>
         </Label>
-        <Label layoutX="54.0" layoutY="59.0" prefHeight="38.0" prefWidth="101.0" text="date" />
+        <Label layoutX="54.0" layoutY="59.0" prefHeight="38.0" prefWidth="101.0" text="date_creation" />
         <Label layoutX="54.0" layoutY="101.0" prefHeight="38.0" prefWidth="101.0" text="heure" />
         <Label layoutX="54.0" layoutY="149.0" prefHeight="38.0" prefWidth="101.0" text="symptome" />
         <Label layoutX="54.0" layoutY="192.0" prefHeight="38.0" prefWidth="101.0" text="gravite" />
         <Label layoutX="54.0" layoutY="240.0" prefHeight="38.0" prefWidth="101.0" text="ref_utilisateur" />
         <Label layoutX="54.0" layoutY="287.0" prefHeight="38.0" prefWidth="101.0" text="ref_fiche_patient" />
 
-        <DatePicker fx:id="date_prise_en_charge" layoutX="155.0" layoutY="59.0" prefHeight="38.0" prefWidth="149.0" />
+        <DatePicker fx:id="date_creation" layoutX="155.0" layoutY="59.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="heure" layoutX="155.0" layoutY="101.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="symptome" layoutX="155.0" layoutY="149.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="gravite" layoutX="155.0" layoutY="192.0" prefHeight="38.0" prefWidth="149.0" />

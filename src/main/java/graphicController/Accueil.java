@@ -24,6 +24,9 @@ public class Accueil {
     private Button gestionfichepatient;
 
     @FXML
+    private Button gestionproduitfournisseur;
+
+    @FXML
     private Button gestionutilisateurs;
 
     @FXML
@@ -46,6 +49,13 @@ public class Accueil {
         Main.change("UserCrud", new UserCrud(), "Crud user");
     }
 
+
+
+    @FXML
+    void gestionproduitfournisseur(ActionEvent event) {
+        Main.change("ProduitFournisseurCrud", new CrudProduit(), "Crud produit fournisseur");
+
+    }
 
 
     @FXML

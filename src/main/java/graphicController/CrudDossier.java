@@ -27,7 +27,7 @@ public class CrudDossier {
     private TextField id;
 
     @FXML
-    private DatePicker date;
+    private DatePicker date_creation;
 
     @FXML
     private TextField heure;
@@ -48,24 +48,26 @@ public class CrudDossier {
     public void initialize() {
         // Configurez les cellules des colonnes pour afficher les valeurs correctes
         TableColumn<ObservableList<String>, String> idCol = new TableColumn<>("ID");
-        TableColumn<ObservableList<String>, String> dateCol = new TableColumn<>("date");
+        TableColumn<ObservableList<String>, String> date_creationCol = new TableColumn<>("date_creation");
+        TableColumn<ObservableList<String>, String> heureCol = new TableColumn<>("heure");
         TableColumn<ObservableList<String>, String> symptomeCol = new TableColumn<>("symptome");
-        TableColumn<ObservableList<String>, String> graviteCol = new TableColumn<>("gravite");        TableColumn<ObservableList<String>, String> date_prise_en_chargeCol = new TableColumn<>("date_prise_en_charge");
+        TableColumn<ObservableList<String>, String> graviteCol = new TableColumn<>("gravite");
         TableColumn<ObservableList<String>, String> ref_utilisateurCol = new TableColumn<>("ref_utilisateur");
         TableColumn<ObservableList<String>, String> ref_fiche_patientCol = new TableColumn<>("ref_fiche_patient");
 
 
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
-        dateCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
-        symptomeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
-        graviteCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
-        ref_utilisateurCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
-        ref_fiche_patientCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
+        date_creationCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
+        heureCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
+        symptomeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
+        graviteCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(4)));
+        ref_utilisateurCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(5)));
+        ref_fiche_patientCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(6)));
 
 
         // Ajouter les colonnes à la TableView
-        table.getColumns().addAll(idCol, dateCol, symptomeCol, graviteCol, ref_utilisateurCol,ref_fiche_patientCol);
+        table.getColumns().addAll(idCol, date_creationCol, heureCol, symptomeCol, graviteCol, ref_utilisateurCol,ref_fiche_patientCol);
     }
 
 
@@ -89,8 +91,8 @@ public class CrudDossier {
     void register(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO dossier (date, heure, symptome, gravite, ref_utilisateur, ref_fiche_patient) VALUES (?,?,?,?,?,?)");
-            req.setString(1, String.valueOf(this.date.getValue()));
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO dossier (date_creation, heure, symptome, gravite, ref_utilisateur, ref_fiche_patient) VALUES (?,?,?,?,?,?)");
+            req.setString(1, String.valueOf(this.date_creation.getValue()));
             req.setString(2, this.heure.getText());
             req.setString(3, this.symptome.getText());
             req.setString(4,  this.gravite.getText());
@@ -121,7 +123,7 @@ public class CrudDossier {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 // Ajoutez les valeurs des colonnes à chaque ligne
                 row.add(rs.getString("id_dossier"));
-                row.add(rs.getString("date"));
+                row.add(rs.getString("date_creation"));
                 row.add(rs.getString("heure"));
                 row.add(rs.getString("symptome"));
                 row.add(rs.getString("gravite"));
@@ -149,14 +151,14 @@ public class CrudDossier {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE dossier SET date = ?, heure = ?, symptome = ?,  gravite = ?,  ref_utilisateur = ?, ref_fiche_patient = ? WHERE id_dossier = ?");
-            req.setString(1, String.valueOf(this.date.getValue()));
+            req = new Bdd().getBdd().prepareStatement("UPDATE dossier SET date_creation = ?, heure = ?, symptome = ?,  gravite = ?,  ref_utilisateur = ?, ref_fiche_patient = ? WHERE id_dossier = ?");
+            req.setString(1, String.valueOf(this.date_creation.getValue()));
             req.setString(2, this.heure.getText());
             req.setString(3, this.symptome.getText());
             req.setString(4,  this.gravite.getText());
             req.setString(5, this.ref_utilisateur.getText());
             req.setString(6, this.ref_fiche_patient.getText());
-            req.setString(4, this.id.getText());
+            req.setString(7, this.id.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
