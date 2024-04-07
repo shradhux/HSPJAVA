@@ -51,12 +51,26 @@ public class Accueil {
 
 
 
+
+
     @FXML
-    void gestionproduitfournisseur(ActionEvent event) {
-        Main.change("ProduitFournisseurCrud", new CrudProduit(), "Crud produit fournisseur");
+    void gestionhospitalisation(ActionEvent event) {
+        Main.change("HospitalisationCrud", new CrudHospitalisation(), "Crud Hospitalisation");
 
     }
 
+    @FXML
+    void gestiondossier(ActionEvent event) {
+        Main.change("DossierCrud", new CrudDossier(), "Crud dossier");
+
+    }
+
+
+    @FXML
+    void gestionproduit(ActionEvent event) {
+        Main.change("ProduitCrud", new CrudProduit(), "Crud produit");
+
+    }
 
     @FXML
     void deconnexion(ActionEvent event) {Main.change("Connection");

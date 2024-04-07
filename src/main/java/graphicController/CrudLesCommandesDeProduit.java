@@ -1,4 +1,7 @@
 package graphicController;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import application.Main;
 import javafx.beans.property.SimpleStringProperty;
@@ -7,14 +10,26 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import modele.bdd.Bdd;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+public class CrudLesCommandesDeProduit {
 
-public class CrudProduitFournisseur {
 
+    @FXML
+    private TableColumn<?, ?> eid;
+
+    @FXML
+    private Button retour;
+
+    @FXML
+    private TextField quantite;
+
+    @FXML
+    private TextField ref_commande_produit;
+
+    @FXML
+    private TextField ref_produit;
 
 
     @FXML
@@ -22,49 +37,29 @@ public class CrudProduitFournisseur {
 
 
 
-    @FXML
-    private TextField ref_produit;
-
-    @FXML
-    private TextField ref_fournisseur;
-
-    @FXML
-    private TextField prix;
-
 
 
     @FXML
     private TableView<ObservableList<String>> table;
-
-    @FXML
-    private Button retour;
-
-    @FXML
-    private Button deleteProduitFournisseur;
-
-
 
 
     @FXML
     public void initialize() {
         // Configurez les cellules des colonnes pour afficher les valeurs correctes
         TableColumn<ObservableList<String>, String> idCol = new TableColumn<>("ID");
-        TableColumn<ObservableList<String>, String> prixCol = new TableColumn<>("prix");
-        TableColumn<ObservableList<String>, String> ref_fournisseurCol = new TableColumn<>("ref_fournisseur");
+        TableColumn<ObservableList<String>, String> quantiteCol = new TableColumn<>("quantite");
+        TableColumn<ObservableList<String>, String> ref_commande_produitCol = new TableColumn<>("ref_commande_produit");
         TableColumn<ObservableList<String>, String> ref_produitCol = new TableColumn<>("ref_produit");
-
 
 
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
-        prixCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
-        ref_fournisseurCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
+        quantiteCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
+        ref_commande_produitCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(2)));
         ref_produitCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(3)));
 
-
-
         // Ajouter les colonnes à la TableView
-        table.getColumns().addAll(idCol, prixCol, ref_fournisseurCol, ref_produitCol);
+        table.getColumns().addAll(idCol, quantiteCol, ref_commande_produitCol, ref_produitCol);
     }
 
 
@@ -72,10 +67,10 @@ public class CrudProduitFournisseur {
 
 
     @FXML
-    void deleteProduitFournisseur(ActionEvent event) {
+    void deleteLesCommandesDeProduit(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("DELETE FROM produitfournisseur WHERE id_produit_fournisseur = ?");
+            req = new Bdd().getBdd().prepareStatement("DELETE FROM lescommandesdeproduit WHERE id_les_commandes_de_produit = ?");
             req.setString(1, this.id.getText());
 
             req.executeUpdate();
@@ -88,11 +83,10 @@ public class CrudProduitFournisseur {
     void register(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO produitfournisseur (prix, ref_fournisseur, ref_produit) VALUES (?,?,?)");
-            req.setString(1, this.prix.getText());
-            req.setString(2, this.ref_fournisseur.getText());
-            req.setString(3,  this.ref_produit.getText());
-
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO lescommandesdeproduit (quantite, ref_commande_produit, ref_produit) VALUES (?,?,?)");
+            req.setString(1, this.quantite.getText());
+            req.setString(2, this.ref_commande_produit.getText());
+            req.setString(3, this.ref_produit.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -109,7 +103,7 @@ public class CrudProduitFournisseur {
     @FXML
     void showAll(ActionEvent event) {
         try {
-            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM produitfournisseur");
+            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM lescommandesdeproduit");
             ResultSet rs = req.executeQuery();
 
             ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
@@ -117,11 +111,10 @@ public class CrudProduitFournisseur {
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 // Ajoutez les valeurs des colonnes à chaque ligne
-                row.add(rs.getString("id_produit_fournisseur"));
-                row.add(rs.getString("prix"));
-                row.add(rs.getString("ref_fournisseur"));
+                row.add(rs.getString("id_produit"));
+                row.add(rs.getString("quantite"));
+                row.add(rs.getString("ref_commande_produit"));
                 row.add(rs.getString("ref_produit"));
-
                 data.add(row);
             }
 
@@ -144,10 +137,10 @@ public class CrudProduitFournisseur {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE produitfournisseur SET prix = ?, ref_fournisseur = ?, ref_produit = ? WHERE id_produit_fournisseur = ?");
-            req.setString(1, this.prix.getText());
-            req.setString(2, this.ref_fournisseur.getText());
-            req.setString(3,  this.ref_produit.getText());
+            req = new Bdd().getBdd().prepareStatement("UPDATE lescommandesdeproduit SET quantite = ?, ref_commande_produit = ?, ref_produit = ? WHERE id_les_commandes_de_produit = ?");
+            req.setString(1, this.quantite.getText());
+            req.setString(2, this.ref_commande_produit.getText());
+            req.setString(3, this.ref_produit.getText());
             req.setString(4, this.id.getText());
             req.executeUpdate();
         } catch (SQLException e) {
@@ -158,7 +151,5 @@ public class CrudProduitFournisseur {
     void retour(ActionEvent event) {
         Main.change("Accueil");
     }
-
-
 
 }

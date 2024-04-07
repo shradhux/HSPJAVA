@@ -25,6 +25,10 @@
         <TextField fx:id="gravite" layoutX="155.0" layoutY="192.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="ref_utilisateur" layoutX="155.0" layoutY="240.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="ref_fiche_patient" layoutX="155.0" layoutY="287.0" prefHeight="38.0" prefWidth="149.0" />
+
+        <Button layoutX="358.0" layoutY="149.0" mnemonicParsing="false" onAction="#listeUtilisateur" prefHeight="38.0" prefWidth="135.0" text="Liste utilisateur" />
+        <Button layoutX="358.0" layoutY="211.0" mnemonicParsing="false" onAction="#listeFichePatient" prefHeight="38.0" prefWidth="135.0" text="Liste fiche patient" />
+
         <Button layoutX="358.0" layoutY="278.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Ajouter" />
         <Button layoutX="128.0" layoutY="334.0" mnemonicParsing="false" onAction="#deletedossier" prefHeight="38.0" prefWidth="120.0" text="Supprimer" />
         <TextField fx:id="id" layoutX="6.0" layoutY="334.0" prefHeight="38.0" prefWidth="112.0" promptText="Entrer ID pour sup ou modif" />

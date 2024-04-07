@@ -1,5 +1,6 @@
 package graphicController;
 
+import Classes.HospitalisationChambre;
 import Classes.Utilisateur;
 import application.Main;
 import controller.Controller.UtilisateurController;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 
 public class Connection {
+
+    private static int id_actual_user;
 
     @FXML
     private Button connectbutton;
@@ -39,11 +42,12 @@ public class Connection {
     void connection(ActionEvent event) {
         try {
             Utilisateur user = new UtilisateurController().Connect(login.getText(), mdp.getText());
+
             if (user == null){
                 this.oubli.setVisible(true);
             }
             else {
-                Main.change("Accueil");
+                Main.change("AccueilMedecin");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -89,7 +93,21 @@ public class Connection {
 
     @FXML
     void crudproduitfournisseurbtn(ActionEvent event) {
-        Main.change("ProduitFournisseurCrud", new CrudFournisseur(), "Crud produit fournisseur");
+        Main.change("ProduitFournisseurCrud", new CrudProduitFournisseur(), "Crud produit fournisseur");
     }
 
+    @FXML
+    void crudlescommandesdeproduitbtn(ActionEvent event) {
+        Main.change("LesCommandesDeProduitCrud", new CrudLesCommandesDeProduit(), "Crud les commandes de produits");
+    }
+
+    @FXML
+    void crudcommandeproduitbtn(ActionEvent event) {
+        Main.change("CommandeProduitCrud", new CrudCommandeProduit(), "Crud commande produit");
+    }
+
+    @FXML
+    void crudhospitalisationchambrebtn(ActionEvent event) {
+        Main.change("HospitalisationChambreCrud", new CrudHospitalisationChambre(), "Crud hospitalisation chambre");
+    }
 }

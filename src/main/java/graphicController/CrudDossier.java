@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Classes.FichePatient;
 import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -167,6 +168,18 @@ public class CrudDossier {
     @FXML
     void retour(ActionEvent event) {
         Main.change("Accueil");
+    }
+
+    @FXML
+    void listeUtilisateur(ActionEvent event) {
+        Main.fenetreAnnexe("ListeUtilisateur",new UserCrud(),"User");
+
+    }
+
+    @FXML
+    void listeFichePatient(ActionEvent event) {
+        Main.fenetreAnnexe("ListeFichePatient",new CrudFichePatient(),"Fiche Patient");
+
     }
 
 }

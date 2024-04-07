@@ -19,6 +19,8 @@
         <DatePicker fx:id="date_prise_en_charge" layoutX="194.0" layoutY="82.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="description_de_la_maladie" layoutX="194.0" layoutY="130.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="ref_dossier" layoutX="194.0" layoutY="174.0" prefHeight="38.0" prefWidth="149.0" />
+        <Button layoutX="358.0" layoutY="182.0" mnemonicParsing="false" onAction="#listeChambreDisponible" prefHeight="38.0" prefWidth="200.0" text="Liste chambre disponible" />
+        <Button layoutX="358.0" layoutY="220.0" mnemonicParsing="false" onAction="#listeDossier" prefHeight="38.0" prefWidth="200.0" text="Afficher les dossiers" />
         <Button layoutX="358.0" layoutY="278.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Ajouter" />
         <Label fx:id="lavel" layoutX="54.0" layoutY="278.0" prefHeight="38.0" prefWidth="235.0" />
         <Button layoutX="128.0" layoutY="334.0" mnemonicParsing="false" onAction="#deletehospitalisation" prefHeight="38.0" prefWidth="120.0" text="Supprimer" />

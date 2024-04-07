@@ -9,12 +9,15 @@ import java.sql.SQLException;
 
 public class UtilisateurController {
 
+    private static int id_actual_user;
+
     public Utilisateur Connect(String email, String mdp) throws SQLException {
         PreparedStatement req = new Bdd().getBdd().prepareStatement("select id_utilisateur, nom, prenom, email, mdp, role from utilisateur where email = ? and mdp = ? ;");
         req.setString(1, email);
         req.setString(2, mdp);
         ResultSet rep = req.executeQuery();
         if (rep.next()) {
+            id_actual_user = rep.getInt(1);
             return new Utilisateur(rep.getInt(1), rep.getString(2), rep.getString(3), rep.getString(4), rep.getString(5), rep.getString(6));
         } else {
             return null;
@@ -62,6 +65,8 @@ public class UtilisateurController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
 
 
     }

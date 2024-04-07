@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Classes.HospitalisationChambre;
+import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -151,6 +153,15 @@ public class CrudHospitalisation {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    @FXML
+    void listeDossier(ActionEvent event){
+        Main.fenetreAnnexe("ListeDossier",new CrudDossier(),"Dossier");
+    }
+
+    @FXML
+    void listeChambreDisponible(ActionEvent event){
+        Main.fenetreAnnexe("listeChambreDisponible",new CrudHospitalisationChambre(),"Chambres disponibles");
     }
 
 }

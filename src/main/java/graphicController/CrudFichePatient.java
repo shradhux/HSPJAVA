@@ -227,9 +227,11 @@ public class CrudFichePatient {
     }
 
     @FXML
-    void gestiondossier(ActionEvent event) {
-        Main.change("Accueil");
+    void listeUtilisateur(ActionEvent event) {
+        Main.fenetreAnnexe("ListeUtilisateur",new UserCrud(),"User");
+
     }
+
 
 
 }

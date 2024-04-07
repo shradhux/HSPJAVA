@@ -51,6 +51,25 @@ public class Main extends Application {
     }
 
 
+
+
+    public static void fenetreAnnexe(String fxml, Object controller, String title) {
+
+        Stage newStage = new Stage(); // Créer une nouvelle instance de Stage
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+        fxmlLoader.setController(controller);
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        newStage.setTitle(title);
+        newStage.setScene(scene);
+        newStage.show();
+    }
+
+
     public static void change(String fxml) {
         // Step 1
         stage.close();
