@@ -49,5 +49,10 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
+    public String setRole(String role) {
+        this.role = role;
+        return role;
+    }
+
 
 }

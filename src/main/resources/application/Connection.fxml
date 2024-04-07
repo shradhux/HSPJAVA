@@ -15,17 +15,8 @@
    <Label text="mdp" />
    <PasswordField fx:id="mdp" />
    <Button fx:id="connectbutton" mnemonicParsing="false" onAction="#connection" text="se connecter" />
-    <Button fx:id="crudfichepatient" mnemonicParsing="false" onAction="#crudfichepatientbtn" text="Crud fiche patient" />
-    <Button fx:id="crudhospitalisationchambre" mnemonicParsing="false" onAction="#crudhospitalisationchambrebtn" text="Crud hospitalisation chambre" />
    <Button fx:id="oubli" mnemonicParsing="false" onAction="#oubli" text="mdp oublié" visible="false" />
-    <Button fx:id="cruddossier" mnemonicParsing="false" onAction="#cruddossierbtn" text="Crud dossier" />
-    <Button fx:id="cruduser" mnemonicParsing="false" onAction="#cruduserbtn" text="Crud User" />
-    <Button fx:id="crudcommandeproduit" mnemonicParsing="false" onAction="#crudcommandeproduitbtn" text="Crud commande produit" />
-    <Button fx:id="crudproduit" mnemonicParsing="false" onAction="#crudproduitbtn" text="Crud produit" />
-    <Button fx:id="crudhospitalisation" mnemonicParsing="false" onAction="#crudhospitalisationbtn" text="Crud hospitalisation" />
-    <Button fx:id="crudproduitfournisseur" mnemonicParsing="false" onAction="#crudproduitfournisseurbtn" text="Crud produit fournisseur" />
-    <Button fx:id="crudfournisseur" mnemonicParsing="false" onAction="#crudfournisseurbtn" text="Crud fournisseur" />
-    <Button fx:id="lescommandesdeproduit" mnemonicParsing="false" onAction="#crudlescommandesdeproduitbtn" text="Crud commandes de produit" />
+
 
 
 </VBox>

@@ -11,6 +11,10 @@ public class UtilisateurController {
 
     private static int id_actual_user;
 
+    public static int getId_actual_user(){
+        return id_actual_user;
+    }
+
     public Utilisateur Connect(String email, String mdp) throws SQLException {
         PreparedStatement req = new Bdd().getBdd().prepareStatement("select id_utilisateur, nom, prenom, email, mdp, role from utilisateur where email = ? and mdp = ? ;");
         req.setString(1, email);

@@ -55,6 +55,7 @@ public class CrudProduitFournisseur {
 
 
 
+
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
         prixCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(1)));
@@ -112,15 +113,27 @@ public class CrudProduitFournisseur {
             PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM produitfournisseur");
             ResultSet rs = req.executeQuery();
 
+
+
+
+
+
             ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
 
             while (rs.next()) {
+
+                PreparedStatement req2 = new Bdd().getBdd().prepareStatement("SELECT nom FROM Fournisseur WHERE id_fournisseur = ?)");
+                req2.setString(1,rs.getString("ref_fournisseur"));
+                ResultSet rs2 = req.executeQuery();
+                rs2.next();
+
                 ObservableList<String> row = FXCollections.observableArrayList();
                 // Ajoutez les valeurs des colonnes à chaque ligne
                 row.add(rs.getString("id_produit_fournisseur"));
                 row.add(rs.getString("prix"));
                 row.add(rs.getString("ref_fournisseur"));
-                row.add(rs.getString("ref_produit"));
+
+
 
                 data.add(row);
             }
@@ -159,6 +172,34 @@ public class CrudProduitFournisseur {
         Main.change("Accueil");
     }
 
+    @FXML
+    void showAllProduitFournisseur(ActionEvent event) {
+        try {
+            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT * FROM produitfournisseur WHERE ref_produit = ?");
+            req.setString(1, CrudProduit.getIddetail());
+            ResultSet rs = req.executeQuery();
 
+            ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+                ObservableList<String> row = FXCollections.observableArrayList();
+                // Ajoutez les valeurs des colonnes à chaque ligne
+                row.add(rs.getString("id_produit_fournisseur"));
+                row.add(rs.getString("prix"));
+                row.add(rs.getString("ref_fournisseur"));
+                row.add(rs.getString("ref_produit"));
+
+
+                data.add(row);
+            }
+
+            // Afficher les données dans la table
+            table.setItems(data);
+
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

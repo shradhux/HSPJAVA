@@ -1,8 +1,5 @@
 package graphicController;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import Classes.HospitalisationChambre;
 import application.Main;
@@ -25,6 +22,10 @@ public class CrudHospitalisation {
 
     @FXML
     private TextField ref_dossier;
+
+    @FXML
+    private TextField ref_chambre;
+
 
     @FXML
     private TextField id;
@@ -77,10 +78,28 @@ public class CrudHospitalisation {
     void deletehospitalisation(ActionEvent event) {
         PreparedStatement req = null;
         try {
+
+
+            PreparedStatement req3 = null;
+            req3 = new Bdd().getBdd().prepareStatement("UPDATE chambre set est_libre = ?  where id_chambre in (SELECT ref_chambre from hospitalisationchambre WHERE ref_hospitalisation = ?)");
+            req3.setString(2, this.ref_chambre.getText());
+            req3.setString(1, "1");
+            req3.executeUpdate();
+
+
             req = new Bdd().getBdd().prepareStatement("DELETE FROM hospitalisation WHERE id_hospitalisation = ?");
             req.setString(1, this.id.getText());
 
             req.executeUpdate();
+
+            PreparedStatement req2 = null;
+            req2 = new Bdd().getBdd().prepareStatement("DELETE FROM hospitalisationchambre WHERE ref_hospitalisation = ?");
+            req2.setString(1, this.id.getText());
+
+            req2.executeUpdate();
+
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -89,12 +108,33 @@ public class CrudHospitalisation {
     @FXML
     void register(ActionEvent event) {
         PreparedStatement req = null;
+
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO hospitalisation (date_prise_en_charge, description_de_la_maladie, ref_dossier) VALUES (?,?,?)");
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO hospitalisation (date_prise_en_charge, description_de_la_maladie, ref_dossier) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             req.setString(1, String.valueOf(this.date_prise_en_charge.getValue()));
             req.setString(2, this.description_de_la_maladie.getText());
             req.setString(3, this.ref_dossier.getText());
             req.executeUpdate();
+
+
+            int idchambre = 0;
+            ResultSet generatedKeys = req.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                 idchambre = generatedKeys.getInt(1);
+
+            }
+            PreparedStatement req2 = null;
+            req2 = new Bdd().getBdd().prepareStatement("INSERT INTO hospitalisationchambre (ref_chambre, ref_hospitalisation) VALUES (?,?)");
+            req2.setString(1, this.ref_chambre.getText());
+            req2.setString(2, String.valueOf(idchambre));
+            req2.executeUpdate();
+
+            PreparedStatement req3 = null;
+            req3 = new Bdd().getBdd().prepareStatement("UPDATE chambre set est_libre = ?  where id_chambre in (SELECT ref_chambre from hospitalisationchambre WHERE ref_hospitalisation = ?)");
+            req3.setString(2, this.ref_chambre.getText());
+            req3.setString(1, "0");
+            req3.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -150,6 +190,15 @@ public class CrudHospitalisation {
             req.setString(3, this.ref_dossier.getText());
             req.setString(4, this.id.getText());
             req.executeUpdate();
+
+
+            PreparedStatement req2 = null;
+            req2 = new Bdd().getBdd().prepareStatement("UPDATE hospitalisationchambre SET ref_chambre = ? WHERE ref_hospitalisation = ?");
+            req2.setString(1, this.ref_chambre.getText());
+            req2.setString(2, this.id.getText());
+
+            req2.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -161,7 +210,7 @@ public class CrudHospitalisation {
 
     @FXML
     void listeChambreDisponible(ActionEvent event){
-        Main.fenetreAnnexe("listeChambreDisponible",new CrudHospitalisationChambre(),"Chambres disponibles");
+        Main.fenetreAnnexe("listeChambreDisponible",new Chambre(),"Chambres disponibles");
     }
 
 }

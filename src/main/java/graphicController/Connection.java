@@ -9,12 +9,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import modele.bdd.Bdd;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class Connection {
 
-    private static int id_actual_user;
+
 
     @FXML
     private Button connectbutton;
@@ -38,16 +42,28 @@ public class Connection {
     @FXML
     private Label welcomeText;
 
+
     @FXML
     void connection(ActionEvent event) {
         try {
             Utilisateur user = new UtilisateurController().Connect(login.getText(), mdp.getText());
 
+            PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT role FROM Utilisateur where email = ? AND mdp = ?");
+            req.setString(1,login.getText());
+            req.setString(2,mdp.getText());
+            ResultSet rs = req.executeQuery();
+            rs.next();
+            String role = user.setRole(rs.getString(1));
+
             if (user == null){
                 this.oubli.setVisible(true);
             }
-            else {
-                Main.change("AccueilMedecin");
+            else if (Objects.equals(role, "secretaire")) {
+                Main.change("AccueilSecretaire");
+            }            else if (Objects.equals(role, "gestionnaire")) {
+                Main.change("AccueilGestionnaire");
+            }            else if (Objects.equals(role, "medecin")) {
+                Main.change("Accueilmedecin");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -55,59 +71,12 @@ public class Connection {
 
     }
 
-    @FXML
-    void cruduserbtn(ActionEvent event) {
-        Main.change("UserCrud", new UserCrud(), "Crud user");
-    }
 
-    @FXML
-    void crudproduitbtn(ActionEvent event) {
-        Main.change("ProduitCrud", new CrudProduit(), "Crud produit");
-    }
-
-    @FXML
-    void crudhospitalisationbtn(ActionEvent event) {
-        Main.change("HospitalisationCrud", new CrudHospitalisation(), "Crud hospitalisation");
-    }
-
-    @FXML
-    void crudfichepatientbtn(ActionEvent event) {
-        Main.change("FichePatientCrud", new CrudFichePatient(), "Crud fiche patient");
-    }
 
     @FXML
     void oubli(ActionEvent event) {
         Main.change("Oubli", new Oubli(), "Réinitialiser votre mdp");
     }
 
-    @FXML
-    void cruddossierbtn(ActionEvent event) {
-        Main.change("DossierCrud", new CrudDossier(), "Crud dossier");
-    }
 
-
-    @FXML
-    void crudfournisseurbtn(ActionEvent event) {
-        Main.change("FournisseurCrud", new CrudFournisseur(), "Crud fournisseur");
-    }
-
-    @FXML
-    void crudproduitfournisseurbtn(ActionEvent event) {
-        Main.change("ProduitFournisseurCrud", new CrudProduitFournisseur(), "Crud produit fournisseur");
-    }
-
-    @FXML
-    void crudlescommandesdeproduitbtn(ActionEvent event) {
-        Main.change("LesCommandesDeProduitCrud", new CrudLesCommandesDeProduit(), "Crud les commandes de produits");
-    }
-
-    @FXML
-    void crudcommandeproduitbtn(ActionEvent event) {
-        Main.change("CommandeProduitCrud", new CrudCommandeProduit(), "Crud commande produit");
-    }
-
-    @FXML
-    void crudhospitalisationchambrebtn(ActionEvent event) {
-        Main.change("HospitalisationChambreCrud", new CrudHospitalisationChambre(), "Crud hospitalisation chambre");
-    }
 }

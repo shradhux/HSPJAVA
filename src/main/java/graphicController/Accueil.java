@@ -67,8 +67,14 @@ public class Accueil {
 
 
     @FXML
+    void demandeproduit(ActionEvent event) {
+        Main.change("DemandeProduitCrud", new CrudDemandeProduit(), "Demande produit");
+
+    }
+
+    @FXML
     void gestionproduit(ActionEvent event) {
-        Main.change("ProduitCrud", new CrudProduit(), "Crud produit");
+        Main.change("ProduitCrud", new CrudProduit(), "Gestion produit");
 
     }
 
@@ -76,6 +82,12 @@ public class Accueil {
     void deconnexion(ActionEvent event) {Main.change("Connection");
 
     }
+    @FXML
+    void validerdemandeproduit(ActionEvent event) {
+        Main.fenetreAnnexe("validerProduit", new CrudDemandeProduit(), "Valider produit");
+
+    }
+
 
 }
 

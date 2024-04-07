@@ -15,6 +15,8 @@ import modele.bdd.Bdd;
 
 public class CrudProduit {
 
+    private static String iddetail;
+
     @FXML
     private TableColumn<String, ?> libelleT;
 
@@ -164,7 +166,19 @@ public class CrudProduit {
     }
     @FXML
     void retour(ActionEvent event) {
-        Main.change("Accueil");
+        Main.change("AccueilGestionnaire");
     }
+
+    @FXML
+    void detailProduit(ActionEvent event) {
+        iddetail = id.getText();
+        Main.fenetreAnnexe("listeProduitFournisseur",new CrudProduitFournisseur(), "Detail produit fournisseur");
+    }
+
+    public static String getIddetail(){
+        return iddetail;
+    }
+
+
 
 }
