@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import application.Main;
+import controller.Controller.UtilisateurController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -102,7 +103,7 @@ public class CrudFichePatient {
         TableColumn<ObservableList<String>, String> rueCol = new TableColumn<>("rue");
         TableColumn<ObservableList<String>, String> cpCol = new TableColumn<>("cp");
         TableColumn<ObservableList<String>, String> villeCol = new TableColumn<>("ville");
-        TableColumn<ObservableList<String>, String> ref_utilisateurCol = new TableColumn<>("ref_utilisateur");
+
 
         // Définir comment récupérer les valeurs pour chaque colonne
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(0)));
@@ -114,11 +115,11 @@ public class CrudFichePatient {
         rueCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(6)));
         cpCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(7)));
         villeCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(8)));
-        ref_utilisateurCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(9)));
+
 
 
         // Ajouter les colonnes à la TableView
-        table.getColumns().addAll(idCol, nomCol, prenomCol, num_securite_socialeCol,emailCol,telephoneCol,rueCol,cpCol,villeCol,ref_utilisateurCol);
+        table.getColumns().addAll(idCol, nomCol, prenomCol, num_securite_socialeCol,emailCol,telephoneCol,rueCol,cpCol,villeCol);
     }
 
 
@@ -151,7 +152,7 @@ public class CrudFichePatient {
             req.setString(6, this.rue.getText());
             req.setString(7, this.cp.getText());
             req.setString(8, this.ville.getText());
-            req.setString(9, this.ref_utilisateur.getText());
+            req.setString(9, String.valueOf(UtilisateurController.getId_actual_user()));
 
             req.executeUpdate();
         } catch (SQLException e) {
@@ -186,7 +187,6 @@ public class CrudFichePatient {
                 row.add(rs.getString("rue"));
                 row.add(rs.getString("cp"));
                 row.add(rs.getString("ville"));
-                row.add(rs.getString("ref_utilisateur"));
                 data.add(row);
             }
 
@@ -205,7 +205,7 @@ public class CrudFichePatient {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE fichepatient SET nom = ?, prenom = ?, num_securite_sociale = ?,email = ?, telephone = ?, rue = ?,cp = ?, ville = ?, ref_utilisateur = ? WHERE id_fiche_patient = ?");
+            req = new Bdd().getBdd().prepareStatement("UPDATE fichepatient SET nom = ?, prenom = ?, num_securite_sociale = ?,email = ?, telephone = ?, rue = ?,cp = ?, ville = ? WHERE id_fiche_patient = ?");
             req.setString(1, this.nom.getText());
             req.setString(2, this.prenom.getText());
             req.setString(3, this.num_securite_sociale.getText());
@@ -214,8 +214,7 @@ public class CrudFichePatient {
             req.setString(6, this.rue.getText());
             req.setString(7, this.cp.getText());
             req.setString(8, this.ville.getText());
-            req.setString(9, this.ref_utilisateur.getText());
-            req.setString(10, this.id.getText());
+            req.setString(9, this.id.getText());
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -223,7 +222,7 @@ public class CrudFichePatient {
     }
     @FXML
     void retour(ActionEvent event) {
-        Main.change("Accueil");
+        Main.change("AccueilSecretaire");
     }
 
     @FXML

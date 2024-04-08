@@ -16,17 +16,15 @@
         <Label layoutX="54.0" layoutY="101.0" prefHeight="38.0" prefWidth="101.0" text="heure" />
         <Label layoutX="54.0" layoutY="149.0" prefHeight="38.0" prefWidth="101.0" text="symptome" />
         <Label layoutX="54.0" layoutY="192.0" prefHeight="38.0" prefWidth="101.0" text="gravite" />
-        <Label layoutX="54.0" layoutY="240.0" prefHeight="38.0" prefWidth="101.0" text="ref_utilisateur" />
         <Label layoutX="54.0" layoutY="287.0" prefHeight="38.0" prefWidth="101.0" text="ref_fiche_patient" />
 
         <DatePicker fx:id="date_creation" layoutX="155.0" layoutY="59.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="heure" layoutX="155.0" layoutY="101.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="symptome" layoutX="155.0" layoutY="149.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="gravite" layoutX="155.0" layoutY="192.0" prefHeight="38.0" prefWidth="149.0" />
-        <TextField fx:id="ref_utilisateur" layoutX="155.0" layoutY="240.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="ref_fiche_patient" layoutX="155.0" layoutY="287.0" prefHeight="38.0" prefWidth="149.0" />
 
-        <Button layoutX="358.0" layoutY="149.0" mnemonicParsing="false" onAction="#listeUtilisateur" prefHeight="38.0" prefWidth="135.0" text="Liste utilisateur" />
+
         <Button layoutX="358.0" layoutY="211.0" mnemonicParsing="false" onAction="#listeFichePatient" prefHeight="38.0" prefWidth="135.0" text="Liste fiche patient" />
 
         <Button layoutX="358.0" layoutY="278.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Ajouter" />
@@ -38,5 +36,6 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor></TableView>
         <Button layoutX="391.0" layoutY="335.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="101.0" text="Modifier" />
+        <Button layoutX="321.0" layoutY="16.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="149.0" text="Retour" />
     </children>
 </AnchorPane>

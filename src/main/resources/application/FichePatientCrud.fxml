@@ -21,7 +21,7 @@
         <Label layoutX="232.0" layoutY="97.0" prefHeight="38.0" prefWidth="101.0" text="rue" />
         <Label layoutX="232.0" layoutY="135.0" prefHeight="38.0" prefWidth="101.0" text="cp" />
         <Label layoutX="232.0" layoutY="174.0" prefHeight="38.0" prefWidth="101.0" text="ville" />
-        <Label layoutX="96.0" layoutY="219.0" prefHeight="38.0" prefWidth="101.0" text="ref_utilisateur" />
+
 
         <TextField fx:id="nom" layoutX="72.0" layoutY="63.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="prenom" layoutX="72.0" layoutY="101.0" prefHeight="38.0" prefWidth="149.0" />
@@ -32,7 +32,7 @@
         <TextField fx:id="rue" layoutX="334.0" layoutY="101.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="cp" layoutX="334.0" layoutY="139.0" prefHeight="38.0" prefWidth="149.0" />
         <TextField fx:id="ville" layoutX="334.0" layoutY="177.0" prefHeight="38.0" prefWidth="149.0" />
-        <TextField fx:id="ref_utilisateur" layoutX="208.0" layoutY="219.0" prefHeight="38.0" prefWidth="149.0" />
+
 
         <Button layoutX="358.0" layoutY="278.0" mnemonicParsing="false" onAction="#register" prefHeight="38.0" prefWidth="101.0" text="Ajouter" />
         <Button layoutX="128.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteFichePatient" prefHeight="38.0" prefWidth="120.0" text="Supprimer" />
@@ -44,7 +44,7 @@
             </cursor></TableView>
         <Button layoutX="391.0" layoutY="335.0" mnemonicParsing="false" onAction="#update" prefHeight="38.0" prefWidth="101.0" text="Modifier" />
         <Button layoutX="321.0" layoutY="16.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="149.0" text="Retour" />
-        <Button layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#listeUtilisateur" prefHeight="25.0" prefWidth="112.0" text="Liste utilisateur" />
+
 
     </children>
 </AnchorPane>

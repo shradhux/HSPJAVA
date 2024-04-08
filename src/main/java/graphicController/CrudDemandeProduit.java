@@ -104,12 +104,13 @@ public class CrudDemandeProduit {
     void register(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("INSERT INTO demandeproduit (raison, quantite, statut, ref_produit, ref_utilisateur) VALUES (?,?,?,?,?)");
+            req = new Bdd().getBdd().prepareStatement("INSERT INTO demandeproduit (raison, quantite, statut, ref_produit, ref_utilisateur, approuve) VALUES (?,?,?,?,?,?)");
             req.setString(1, this.raison.getText());
             req.setString(2, this.quantite.getText());
             req.setString(3, this.statut.getText());
             req.setString(4, this.ref_produit.getText());
             req.setString(5, String.valueOf(UtilisateurController.getId_actual_user()));
+            req.setString(6, "0");
             req.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -165,7 +166,7 @@ public class CrudDemandeProduit {
     void update(ActionEvent event) {
         PreparedStatement req = null;
         try {
-            req = new Bdd().getBdd().prepareStatement("UPDATE demandeproduit SET raison = ?, quantite = ?, statut = ?, ref_produit = ?, ref_utilisateur = ? WHERE id_demande_produit = ?");
+            req = new Bdd().getBdd().prepareStatement("UPDATE demandeproduit SET raison = ?, quantite = ?, statut = ?, ref_produit = ?, ref_utilisateur = ?, approuve = 0 WHERE id_demande_produit = ?");
             req.setString(1, this.raison.getText());
             req.setString(2, this.quantite.getText());
             req.setString(3, this.statut.getText());
@@ -199,7 +200,7 @@ public class CrudDemandeProduit {
 
     @FXML
     void retour(ActionEvent event) {
-        Main.change("Accueil");
+        Main.change("AccueilMedecin");
     }
 
     @FXML

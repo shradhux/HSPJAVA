@@ -47,14 +47,15 @@ public class Connection {
     void connection(ActionEvent event) {
         try {
             Utilisateur user = new UtilisateurController().Connect(login.getText(), mdp.getText());
-
+            String role = "";
             PreparedStatement req = new Bdd().getBdd().prepareStatement("SELECT role FROM Utilisateur where email = ? AND mdp = ?");
             req.setString(1,login.getText());
             req.setString(2,mdp.getText());
-            ResultSet rs = req.executeQuery();
-            rs.next();
-            String role = user.setRole(rs.getString(1));
 
+            ResultSet rs = req.executeQuery();
+            while (rs.next()) {
+                role = user.setRole(rs.getString(1));
+            }
             if (user == null){
                 this.oubli.setVisible(true);
             }
