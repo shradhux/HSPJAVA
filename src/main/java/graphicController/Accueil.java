@@ -94,6 +94,18 @@ public class Accueil {
 
     }
 
+    @FXML
+    void gestionfournisseur(ActionEvent event) {
+        Main.fenetreAnnexe("FournisseurCrud", new CrudFournisseur(), "Crud fournisseur");
+
+    }
+
+    @FXML
+    void gestionproduitfournisseur(ActionEvent event) {
+        Main.fenetreAnnexe("ProduitFournisseurCrud", new CrudProduitFournisseur(), "Crud produit fournisseur");
+
+    }
+
 
 }
 

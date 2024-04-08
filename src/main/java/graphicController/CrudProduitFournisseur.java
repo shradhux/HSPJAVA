@@ -167,10 +167,7 @@ public class CrudProduitFournisseur {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    void retour(ActionEvent event) {
-        Main.change("Accueil");
-    }
+
 
     @FXML
     void showAllProduitFournisseur(ActionEvent event) {
