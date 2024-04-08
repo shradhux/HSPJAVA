@@ -64,8 +64,11 @@ public class Connection {
             }            else if (Objects.equals(role, "gestionnaire")) {
                 Main.change("AccueilGestionnaire");
             }            else if (Objects.equals(role, "medecin")) {
-                Main.change("Accueilmedecin");
+                Main.change("AccueilMedecin");
+            }else if (Objects.equals(role, "admin")) {
+                Main.change("AccueilAdmin");
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

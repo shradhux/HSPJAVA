@@ -26,6 +26,9 @@ public class CrudHospitalisation {
     @FXML
     private TextField ref_chambre;
 
+    @FXML
+    private Button retour;
+
 
     @FXML
     private TextField id;
@@ -211,6 +214,11 @@ public class CrudHospitalisation {
     @FXML
     void listeChambreDisponible(ActionEvent event){
         Main.fenetreAnnexe("listeChambreDisponible",new Chambre(),"Chambres disponibles");
+    }
+
+    @FXML
+    void retour(ActionEvent event) {
+        Main.change("AccueilMedecin");
     }
 
 }

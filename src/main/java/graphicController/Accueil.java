@@ -88,6 +88,12 @@ public class Accueil {
 
     }
 
+    @FXML
+    void gestionuser(ActionEvent event) {
+        Main.fenetreAnnexe("UserCrud", new UserCrud(), "Crud User");
+
+    }
+
 
 }
 
