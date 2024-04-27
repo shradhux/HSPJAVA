@@ -1,5 +1,6 @@
 package graphicController;
 
+import Classes.Produit;
 import application.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -7,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import modele.bdd.Bdd;
 
 import java.sql.PreparedStatement;
@@ -66,6 +68,27 @@ public class CrudProduitFournisseur {
 
         // Ajouter les colonnes à la TableView
         table.getColumns().addAll(idCol, prixCol, ref_fournisseurCol, ref_produitCol);
+
+
+
+
+
+        // La methode on click pour récupérer l'id
+
+        table.setOnMouseClicked(event -> {
+            // Vérifier si un clic a été effectué avec le bouton gauche de la souris
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                // Récupérer la ligne sélectionnée dans la table
+                ObservableList<String> rowData = table.getSelectionModel().getSelectedItem();
+                if (rowData != null) {
+                    // Récupérer l'ID de la ligne sélectionnée (supposons que l'ID est à l'index 0)
+                    if(this.id != null) {
+                        this.id.setText(rowData.get(0));
+                    }
+
+                }
+            }
+        });
     }
 
 
@@ -114,24 +137,17 @@ public class CrudProduitFournisseur {
             ResultSet rs = req.executeQuery();
 
 
-
-
-
-
             ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
 
             while (rs.next()) {
 
-                PreparedStatement req2 = new Bdd().getBdd().prepareStatement("SELECT nom FROM Fournisseur WHERE id_fournisseur = ?)");
-                req2.setString(1,rs.getString("ref_fournisseur"));
-                ResultSet rs2 = req.executeQuery();
-                rs2.next();
 
                 ObservableList<String> row = FXCollections.observableArrayList();
                 // Ajoutez les valeurs des colonnes à chaque ligne
                 row.add(rs.getString("id_produit_fournisseur"));
                 row.add(rs.getString("prix"));
                 row.add(rs.getString("ref_fournisseur"));
+                row.add(rs.getString("ref_produit"));
 
 
 
@@ -197,6 +213,21 @@ public class CrudProduitFournisseur {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void retour(ActionEvent event) {
+        Main.change("AccueilGestionnaire");
+    }
+
+    @FXML
+    void listeProduit(ActionEvent event) {
+        Main.fenetreAnnexe("listeProduit", new CrudProduit(),"Voir la liste des produits");
+    }
+
+    @FXML
+    void listeFournisseur(ActionEvent event) {
+        Main.fenetreAnnexe("listeFournisseur", new CrudFournisseur(), "Voir la liste des fournisseurs");
     }
 
 }

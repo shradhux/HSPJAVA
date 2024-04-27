@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import modele.bdd.Bdd;
 
 public class CrudCommandeProduit {
@@ -65,8 +66,28 @@ public class CrudCommandeProduit {
 
         // Ajouter les colonnes à la TableView
         table.getColumns().addAll(idCol, raisonCol, statutCol, ref_fournisseurCol,ref_utilisateurCol);
-    }
 
+
+
+
+
+        // La methode on click pour récupérer l'id
+
+        table.setOnMouseClicked(event -> {
+            // Vérifier si un clic a été effectué avec le bouton gauche de la souris
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                // Récupérer la ligne sélectionnée dans la table
+                ObservableList<String> rowData = table.getSelectionModel().getSelectedItem();
+                if (rowData != null) {
+                    // Récupérer l'ID de la ligne sélectionnée (supposons que l'ID est à l'index 0)
+                    if(this.id != null) {
+                        this.id.setText(rowData.get(0));
+                    }
+
+                }
+            }
+        });
+    }
 
 
 
